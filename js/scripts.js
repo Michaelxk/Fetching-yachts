@@ -1,57 +1,58 @@
+document.addEventListener('DOMContentLoaded', () => placeYachtsInDom())
 
-document.addEventListener('DOMContentLoaded', () => {
-  loadYachts();
-})
-
-function getYachtsDb () {
-  const url = '/database/yates.json';
+function getYachtsDb() {
+  const url = '/database/yates.json'
   return fetch(url)
     .then(response => response.json())
-    .then(response => {
-      const yachts = response;
-      return yachts
-    }).catch(error => console.log(error))
+    .then(response => response)
+    .catch(error => console.log(error))
 }
 
-async function loadYachts() {
+function createIconsHtml(icon) {
+  return `
+    <div class="yachts-card__icons">
+      <div class="yachs-card__icon">
+        <img src="${icon.iconUrl}">
+        <p>${icon.iconName}</p>
+      </div>
+    </div>
+  `
+}
 
-  const yachtsList = await getYachtsDb ()
-  let html = '';
-  let yachtsIcons;
-  let yachtsIconsInfo;
+function createHeaderHtml(principalImage) {
+  return `
+    <a href="yachts/aiconfly.html">  
+    <div class="yachts-card__img">
+      <img src="${principalImage}" alt="Alquiler de yate Aicon Fly 56">
+    </div>
+  `
+}
 
+function createHtml(yachtsList) {
+  let html = ''
   yachtsList.forEach(yacht => {
+    let iconsHtml = ''
+    yacht.icons.forEach(icon => (iconsHtml += createIconsHtml(icon)))
+    const headerHtml = createHeaderHtml(yacht.principalImage)
+
     html += `
       <div class="yachts-card">
-        <a href="yachts/aiconfly.html">  
-        <div class="yachts-card__img">
-          <img src="${yacht.principalImage}" alt="Alquiler de yate Aicon Fly 56">
-      </div>
+        ${headerHtml}
         <div class="yachts-card__body">
           <h3 class="yachts-card__title">Yacht charter ${yacht.name}</h3>
-          <div class="yachts-card__icons">
-          
-            <div class="yachs-card__icon">
-              <img src="${yacht.icons.iconUrl}" alt="boat icon">
-              <p>${yacht.icons.iconName}</p>
-            </div>
-            <div class="yachs-card__icon">
-              <img src="${yacht.icons.iconUrl}"  alt="people icon">
-              <p>${yacht.icons.iconUrl}</p>
-            </div>
-            <div class="yachs-card__icon">
-              <img src="${yacht.icons.iconUrl}" alt="measure icon">
-              <p>${yacht.icons.iconName}</p>
-            </div>
-            <div class="yachs-card__icon">
-              <img src="${yacht.icons.iconUrl}" alt="bed icon">
-              <p>2</p>
-            </div>
-          </div>
+            ${iconsHtml}
             <button class="button-yacht__btn">Rent Now</button>
           </a>
+        </div>
       </div>
     `
-  })  
-  document.getElementById('yachts_container').innerHTML = html;
+  })
+  return html
+}
+
+async function placeYachtsInDom() {
+  const yachtsList = await getYachtsDb()
+  const html = createHtml(yachtsList)
+
+  document.getElementById('yachts_container').innerHTML = html
 }
