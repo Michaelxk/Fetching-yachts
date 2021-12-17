@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Aicon Fly 56",
+    "icons": {
+      "icon1": "/img/icons/yacht.png",
+      "icon2": "/img/icons/people.png",
+      "icon3": "/img/icons/measure.png",
+      "icon4": "/img/icons/bed.png"
+    },
+    "info": {
+      "type": "Yachts",
+      "people": 2,
+      "measure": "12m",
+      "bedrooms": 1
+    },
+    "gallery": {
+      "bg": "",
+      "img1": "",
+      "img2": "",
+      "img3": "",
+      "img4": "",
+      "img5": "",
+      "img6": ""
+    }
+  }
+]

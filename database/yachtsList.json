@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "name": "Aicon Fly 56",
+    "image": "../img/yachts/Aicon-fly-56/bg.jpeg",
+    "icons": {
+      "icon1": "/img/icons/yacht.png",
+      "icon2": "/img/icons/people.png",
+      "icon3": "/img/icons/measure.png",
+      "icon4": "/img/icons/bed.png"
+    },
+    "info": {
+      "type": "Yachts",
+      "people": 2,
+      "measure": "12m",
+      "bedrooms": 1
+    }
+  },
+  {
+    "id": 2,
+    "name": "Majestic",
+    "image": "/img/fotohome.jpeg",
+    "icons": {
+      "icon1": "/img/icons/yacht.png",
+      "icon2": "/img/icons/people.png",
+      "icon3": "/img/icons/measure.png",
+      "icon4": "/img/icons/bed.png"
+    },
+    "info": {
+      "type": "Yachts",
+      "people": 2,
+      "measure": "12m",
+      "bedrooms": 1
+    }
+  }
+]
